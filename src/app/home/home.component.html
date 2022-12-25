@@ -1,0 +1,103 @@
+<div class="home">
+  <h1 class="text-center mt-3">
+    Random User on Refresh - Fetching Data from API
+  </h1>
+
+  <div class="container mt-5">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-7">
+        <div
+          class="card p-2 text-center"
+          [ngClass]="{ 'bg-light': toggle, 'bg-warning': !toggle }"
+        >
+          <div class="row">
+            <div class="col-md-7 border-right no-gutters">
+              <div class="py-3">
+                <img [src]="user.image" width="100" class="rounded-circle" />
+                <h4 class="text-success">
+                  <b>{{ user.firstName + " " + user.lastName }}</b>
+                </h4>
+                <div class="allergy">
+                  <span>{{ user.gender }}</span>
+                </div>
+                <div class="stats">
+                  <table class="table table-borderless">
+                    <tbody>
+                      <tr>
+                        <td>
+                          <div class="d-flex flex-column">
+                            <span class="text-left head">Birth Date</span>
+                            <span class="text-left bottom">{{
+                              user.birthDate
+                            }}</span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="d-flex flex-column">
+                            <span class="text-left head">Age</span>
+                            <span class="text-left bottom">{{ user.age }}</span>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="d-flex flex-column">
+                            <span class="text-left head">Weight</span>
+                            <span class="text-left bottom">{{
+                              user.weight
+                            }}</span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="d-flex flex-column">
+                            <span class="text-left head">Height</span>
+                            <span class="text-left bottom">{{
+                              user.height
+                            }}</span>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="px-3">
+                  <button
+                    (click)="refresh()"
+                    type="button"
+                    class="btn btn-outline-success"
+                  >
+                    Refresh
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-5">
+              <div class="py-3">
+                <div>
+                  <span class="d-block head">Home Address</span>
+                  <span class="bottom">{{ user.address.address }}</span>
+                </div>
+                <div class="mt-4">
+                  <span class="d-block head">Mobile Phone</span>
+                  <span class="bottom">{{ user.phone }}</span>
+                </div>
+                <div class="mt-4">
+                  <span class="d-block head">Company</span>
+                  <span class="bottom">{{ user.company.name }}</span>
+                </div>
+                <div class="mt-4">
+                  <span class="d-block head">Job Title</span>
+                  <span class="bottom">{{ user.company.title }}</span>
+                </div>
+                <div class="mt-4">
+                  <span class="d-block head">Email</span>
+                  <span class="bottom">{{ user.email }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
