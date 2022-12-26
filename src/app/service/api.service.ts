@@ -1,17 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
-  baseUrl: string = 'https://dummyjson.com/users';
-
   constructor(private http: HttpClient) {}
 
-  // function to get all users
-  getAllUsers(): Observable<any> {
-    return this.http.get(this.baseUrl);
+  //function for getting particular location temperature detailes
+  getTempDetailes(location: string) {
+    return this.http.get(
+      `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=8ac5c4d57ba6a4b3dfcf622700447b1e`
+    );
   }
 }

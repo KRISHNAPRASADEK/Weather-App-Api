@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { ApiService } from '../service/api.service';
 
 @Component({
@@ -8,34 +7,25 @@ import { ApiService } from '../service/api.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  users: any[] = [];
-  user: any = {};
-  toggle = true;
+  weather: string = '';
+  location: string = '';
+  temp: string = '';
+  icon: string = '';
+  place: string = '';
 
-  constructor(private router: Router, private api: ApiService) {
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+  constructor(private api: ApiService) {}
+  ngOnInit(): void {}
+  //search
+  search(event: any) {
+    this.location = event.target.value;
+    this.getTempDetailes();
   }
-  ngOnInit(): void {
-    this.getUsers();
-  }
-
-  // to get a random user
-  getUsers() {
-    this.api.getAllUsers().subscribe((data: any) => {
-      this.users = data.users;
-      this.getRandomUser();
+  getTempDetailes() {
+    this.api.getTempDetailes(this.location).subscribe((data: any) => {
+      this.weather = data.weather[0].main;
+      this.icon = data.weather[0].icon;
+      this.temp = (data.main.temp - 273.15).toFixed(2) + '°C';
+      this.place = data.name;
     });
-  }
-
-  // get one random user
-  getRandomUser() {
-    var index = Math.floor(Math.random() * 29) + 1;
-    this.user = this.users[index];
-  }
-
-  // to refresh the page
-  refresh() {
-    this.getRandomUser();
-    this.toggle = !this.toggle;
   }
 }

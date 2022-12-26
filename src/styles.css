@@ -1,4 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
-* {
+body {
   font-family: "Roboto", sans-serif;
+  background: url("https://img.freepik.com/premium-photo/colorful-dramatic-sky-with-cloud-sunset-sky-with-sun-background_33736-1538.jpg?w=740");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 500px;
 }
